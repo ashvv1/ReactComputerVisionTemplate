@@ -64,7 +64,7 @@ function App() {
       const getY = (obj) => obj.bbox[1];
       const getYRange = (obj) => getX(obj) + obj.bbox[3];
 
-      const kimOnCouch = (kim && couch) ? (getX(couch) < getX(kim) < getXRange(couch) && getY(couch) < getY(kim) < getYRange(couch)) : false;
+      const kimOnCouch = (kim && couch) ? ((getX(couch) < getX(kim) && getX(kim) < getXRange(couch)) && (getY(couch) < getY(kim) && getY(kim) < getYRange(couch))) : false;
 
       couch && console.log(getX(couch), getXRange(couch), getY(couch), getYRange(couch), couch.class);
       kim && console.log(getX(kim), getY(kim), kim.class);
@@ -79,7 +79,7 @@ function App() {
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx)  
       drawRect(arr, ctx)
-    }
+    } 
   };
 
   useEffect(()=>{runCoco()});
